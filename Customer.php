@@ -43,10 +43,7 @@ class Customer
             $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . $rental->getCharge() . "\n";
         }
 
-        $frequentRenterPoints = 0;
-        foreach ($rentals as $rental) {
-            $frequentRenterPoints += $rental->getFrequentRenterPoints();
-        }
+        $frequentRenterPoints = $this->getTotalFrequentRenterPoints($rentals);
 
         $totalAmount = 0;
         foreach ($rentals as $rental) {
@@ -59,6 +56,19 @@ class Customer
 
 
         return $result;
+    }
+
+    /**
+     * @param $rentals
+     * @return int
+     */
+    private function getTotalFrequentRenterPoints($rentals)
+    {
+        $frequentRenterPoints = 0;
+        foreach ($rentals as $rental_tmp) {
+            $frequentRenterPoints += $rental_tmp->getFrequentRenterPoints();
+        }
+        return $frequentRenterPoints;
     }
 }
 
