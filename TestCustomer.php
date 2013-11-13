@@ -18,7 +18,8 @@ class TestCustomer extends PHPUnit_Framework_TestCase
 {
     public $customer;
 
-    public function setUp(){
+    public function setUp()
+    {
         $this->customer = new \Refactoring\Customer("Joe");
     }
 
