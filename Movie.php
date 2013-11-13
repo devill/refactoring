@@ -28,11 +28,6 @@ class Movie
         $this->setPriceCode($priceCode);
     }
 
-    public function getPriceCode()
-    {
-        return $this->price->getPriceCode();
-    }
-
     public function setPriceCode($arg)
     {
         switch($arg)
