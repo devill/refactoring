@@ -43,7 +43,7 @@ class Customer
         foreach ($rentals as $rental) {
             //while (rentals.hasMoreElements()) {
 
-            $thisAmount = $rental->amountFor();
+            $thisAmount = $rental->getCharge();
 
             $totalAmount += $thisAmount;
 

@@ -35,7 +35,7 @@ class Rental
         return $this->_movie;
     }
 
-    public function amountFor()
+    public function getCharge()
     {
         $result = 0;
         switch ($this->getMovie()->getPriceCode()) {
