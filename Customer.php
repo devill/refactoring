@@ -32,7 +32,7 @@ class Customer
         return $this->name;
     }
 
-    public function statement()
+    public function AsciiStatement()
     {
         $result = "Rental Record for {$this->getName()}\n";
 
@@ -49,7 +49,7 @@ class Customer
     }
 
 
-    public function statementHTML()
+    public function HTMLStatement()
     {
         $result = "<HTML><BODY>Rental Record for {$this->getName()}<br/>";
 

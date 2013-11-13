@@ -33,7 +33,7 @@ class TestCustomer extends PHPUnit_Framework_TestCase
         $this->addRental("Rambo 1", \Refactoring\Movie::CHILDRENS, 1);
 
         // Act
-        $s = $this->customer->statement();
+        $s = $this->customer->AsciiStatement();
 
         // Assert
         $expected = "Rental Record for Joe\n\tRambo 1	1.5\nAmount owed is 1.5\nYou earned 1 frequent renter points";
@@ -50,7 +50,7 @@ class TestCustomer extends PHPUnit_Framework_TestCase
         $this->addRental("Rambo 2", \Refactoring\Movie::NEW_RELEASE, 1);
 
         // Act
-        $s = $this->customer->statement();
+        $s = $this->customer->AsciiStatement();
 
         // Assert
         $expected = "Rental Record for Joe\n\tRambo 1	1.5\n\tRambo 2	3\nAmount owed is 4.5\nYou earned 2 frequent renter points";
@@ -68,7 +68,7 @@ class TestCustomer extends PHPUnit_Framework_TestCase
         $this->addRental("Rambo 2", \Refactoring\Movie::NEW_RELEASE, 2);
 
         // Act
-        $s = $this->customer->statement();
+        $s = $this->customer->AsciiStatement();
 
         // Assert
         $expected = "Rental Record for Joe\n\tRambo 1	1.5\n\tRambo 2	6\nAmount owed is 7.5\nYou earned 3 frequent renter points";
@@ -87,7 +87,7 @@ class TestCustomer extends PHPUnit_Framework_TestCase
         $this->addRental("Rambo 3", \Refactoring\Movie::REGULAR, 1);
 
         // Act
-        $s = $this->customer->statement();
+        $s = $this->customer->AsciiStatement();
 
         //Assert
         $expected = "Rental Record for Joe\n\tRambo 1	1.5\n\tRambo 2	6\n\tRambo 3	2\nAmount owed is 9.5\nYou earned 4 frequent renter points";
@@ -103,7 +103,7 @@ class TestCustomer extends PHPUnit_Framework_TestCase
         $this->addRental("Rambo 1", \Refactoring\Movie::CHILDRENS, 1);
 
         // Act
-        $s = $this->customer->statementHTML();
+        $s = $this->customer->HTMLStatement();
 
         // Assert
         $expected = "<HTML><BODY>Rental Record for Joe<br/>Rambo 1: 1.5<br/>Amount owed is 1.5<br/>You earned 1 frequent renter points</BODY></HTML>";
