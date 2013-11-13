@@ -21,7 +21,7 @@ class Movie
     function __construct($title, $priceCode)
     {
         $this->title = $title;
-        $this->priceCode = $priceCode;
+        $this->setPriceCode($priceCode);
     }
 
     public function getPriceCode()
