@@ -9,6 +9,8 @@
 
 namespace Refactoring;
 
+require_once("Statement/Html.php");
+
 
 class Customer
 {
@@ -71,7 +73,8 @@ class Customer
 
     public function HTMLStatement()
     {
-        return $this->render($this->getStatementData());
+        $statement = new HtmlStatement();
+        return $statement->render($this->getStatementData());
     }
 
     /**
@@ -97,24 +100,6 @@ class Customer
         }
         return $totalAmount;
     }
-
-    /**
-     * @param $statement
-     * @return string
-     */
-    public function render($statement)
-    {
-        $result = "<HTML><BODY>Rental Record for {$statement['name']}<br/>";
-
-        foreach ($statement['rentals'] as $rental) {
-            $result .= "{$rental['title']}: {$rental['charge']}<br/>";
-        }
-        $result .= "Amount owed is {$statement['totalCharge']}<br/>";
-        $result .= "You earned {$statement['totalFrequentRenterPoints']} frequent renter points</BODY></HTML>";
-
-        return $result;
-    }
-
 }
 
 
