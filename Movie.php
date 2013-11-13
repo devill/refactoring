@@ -15,28 +15,28 @@ class Movie
     const CHILDRENS = 2;
     const REGULAR = 0;
     const NEW_RELEASE = 1;
-    private $_title;
-    private $_priceCode;
+    private $title;
+    private $priceCode;
 
     function __construct($title, $priceCode)
     {
-        $this->_title = $title;
-        $this->_priceCode = $priceCode;
+        $this->title = $title;
+        $this->priceCode = $priceCode;
     }
 
     public function getPriceCode()
     {
-        return $this->_priceCode;
+        return $this->priceCode;
     }
 
     public function setPriceCode($arg)
     {
-        $this->_priceCode = $arg;
+        $this->priceCode = $arg;
     }
 
     public function getTitle()
     {
-        return $this->_title;
+        return $this->title;
     }
 
 }

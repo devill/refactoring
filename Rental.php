@@ -13,18 +13,18 @@ namespace Refactoring;
 class Rental
 {
 
-    private $_movie;
-    private $_daysRented;
+    private $movie;
+    private $daysRented;
 
     function __construct($movie, $daysRented)
     {
-        $this->_movie = $movie;
-        $this->_daysRented = $daysRented;
+        $this->movie = $movie;
+        $this->daysRented = $daysRented;
     }
 
     public function getDaysRented()
     {
-        return $this->_daysRented;
+        return $this->daysRented;
     }
 
     /**
@@ -32,7 +32,7 @@ class Rental
      */
     public function getMovie()
     {
-        return $this->_movie;
+        return $this->movie;
     }
 
     public function getCharge()

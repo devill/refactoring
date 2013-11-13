@@ -12,31 +12,31 @@ namespace Refactoring;
 
 class Customer
 {
-    private $_name;
+    private $name;
 
     /** @var Rental[] */
-    private $_rentals = array();
+    private $rentals = array();
 
     function __construct($name)
     {
-        $this->_name = $name;
+        $this->name = $name;
     }
 
     public function addRental(Rental $arg)
     {
-        $this->_rentals[] = $arg;
+        $this->rentals[] = $arg;
     }
 
     public function getName()
     {
-        return $this->_name;
+        return $this->name;
     }
 
     public function statement()
     {
         $result = "Rental Record for {$this->getName()}\n";
 
-        foreach ($this->_rentals as $rental) {
+        foreach ($this->rentals as $rental) {
             //show figures for this rental
             $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . $rental->getCharge() . "\n";
         }
@@ -53,7 +53,7 @@ class Customer
     {
         $result = "<HTML><BODY>Rental Record for {$this->getName()}<br/>";
 
-        foreach ($this->_rentals as $rental) {
+        foreach ($this->rentals as $rental) {
             $result .= "{$rental->getMovie()->getTitle()}: {$rental->getCharge()}<br/>";
         }
         $result .= "Amount owed is {$this->getTotalCharge()}<br/>";
@@ -68,7 +68,7 @@ class Customer
     private function getTotalFrequentRenterPoints()
     {
         $frequentRenterPoints = 0;
-        foreach ($this->_rentals as $rental) {
+        foreach ($this->rentals as $rental) {
             $frequentRenterPoints += $rental->getFrequentRenterPoints();
         }
         return $frequentRenterPoints;
@@ -80,7 +80,7 @@ class Customer
     public function getTotalCharge()
     {
         $totalAmount = 0;
-        foreach ($this->_rentals as $rental) {
+        foreach ($this->rentals as $rental) {
             $totalAmount += $rental->getCharge();
         }
         return $totalAmount;
