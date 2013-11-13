@@ -10,6 +10,9 @@
 namespace Refactoring;
 
 require_once("Price/Price.php");
+require_once("Price/Childrens.php");
+require_once("Price/NewRelease.php");
+require_once("Price/Regular.php");
 
 
 class Movie
