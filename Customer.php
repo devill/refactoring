@@ -9,6 +9,7 @@
 
 namespace Refactoring;
 
+require_once("Statement/Ascii.php");
 require_once("Statement/Html.php");
 
 
@@ -56,18 +57,8 @@ class Customer
 
     public function AsciiStatement()
     {
-        $statement = $this->getStatementData();
-
-        $result = "Rental Record for {$statement['name']}\n";
-
-        foreach ($statement['rentals'] as $rental) {
-            $result .= "\t{$rental['title']}\t{$rental['charge']}\n";
-        }
-
-        $result .= "Amount owed is {$statement['totalCharge']}\n";
-        $result .= "You earned {$statement['totalFrequentRenterPoints']} frequent renter points";
-
-        return $result;
+        $statement = new AsciiStatement();
+        return $statement->render($this->getStatementData());
     }
 
 
@@ -100,6 +91,8 @@ class Customer
         }
         return $totalAmount;
     }
+
+
 }
 
 
