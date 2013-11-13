@@ -43,9 +43,9 @@ class Customer
             $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . $rental->getCharge() . "\n";
         }
 
-        $frequentRenterPoints = $this->getTotalFrequentRenterPoints($rentals);
+        $frequentRenterPoints = $this->getTotalFrequentRenterPoints();
 
-        $totalAmount = $this->getTotalCharge($rentals);
+        $totalAmount = $this->getTotalCharge();
 
         //add footer lines
         $result .= "Amount owed is " . $totalAmount . "\n";
@@ -56,27 +56,25 @@ class Customer
     }
 
     /**
-     * @param $rentals
      * @return int
      */
-    private function getTotalFrequentRenterPoints(Rental $rentals)
+    private function getTotalFrequentRenterPoints()
     {
         $frequentRenterPoints = 0;
-        foreach ($rentals as $rental) {
+        foreach ($this->_rentals as $rental) {
             $frequentRenterPoints += $rental->getFrequentRenterPoints();
         }
         return $frequentRenterPoints;
     }
 
     /**
-     * @param $rentals
      * @return int
      */
-    public function getTotalCharge(Rental $rentals)
+    public function getTotalCharge()
     {
         $totalAmount = 0;
-        foreach ($rentals as $rental_tmp) {
-            $totalAmount += $rental_tmp->getCharge();
+        foreach ($this->_rentals as $rental) {
+            $totalAmount += $rental->getCharge();
         }
         return $totalAmount;
     }
