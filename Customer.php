@@ -41,7 +41,7 @@ class Customer
         $result = "Rental Record for " . $this->getName() . "\n";
 
         foreach ($rentals as $rental) {
-            $frequentRenterPoints += $this->getFrequentRenterPoints($rental);
+            $frequentRenterPoints += $rental->getFrequentRenterPoints();
 
             //show figures for this rental
             $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . $rental->getCharge() . "\n";
@@ -55,14 +55,6 @@ class Customer
 
 
         return $result;
-    }
-
-    private function getFrequentRenterPoints($rental)
-    {
-        if (($rental->getMovie()->getPriceCode() == Movie::NEW_RELEASE) && $rental->getDaysRented() > 1)
-            return 2;
-        else
-            return 1;
     }
 }
 
