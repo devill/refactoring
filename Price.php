@@ -8,10 +8,7 @@ abstract class Price
 
     public function getFrequentRenterPoints($daysRented)
     {
-        if (($this->getPriceCode() == Movie::NEW_RELEASE) && $daysRented > 1)
-            return 2;
-        else
-            return 1;
+        return 1;
     }
 }
 
@@ -57,5 +54,10 @@ class NewReleasePrice extends Price
     public function getCharge($daysRented)
     {
         return $daysRented * 3;
+    }
+
+    public function getFrequentRenterPoints($daysRented)
+    {
+        return ($daysRented > 1) ? 2 : 1;
     }
 }
