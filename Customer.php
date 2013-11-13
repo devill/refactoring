@@ -47,7 +47,7 @@ class Customer
 
     private function getRentalsData()
     {
-        return array_map(function($rental) {
+        return array_map(function(Rental $rental) {
             return array(
                 'title' => $rental->getMovie()->getTitle(),
                 'charge' => $rental->getCharge()
