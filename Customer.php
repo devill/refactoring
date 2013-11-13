@@ -37,11 +37,9 @@ class Customer
         $result = "Rental Record for {$this->getName()}\n";
 
         foreach ($this->rentals as $rental) {
-            //show figures for this rental
             $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . $rental->getCharge() . "\n";
         }
 
-        //add footer lines
         $result .= "Amount owed is {$this->getTotalCharge()}\n";
         $result .= "You earned {$this->getTotalFrequentRenterPoints()} frequent renter points";
 
