@@ -34,7 +34,7 @@ class Customer
 
     public function statement()
     {
-        $result = "Rental Record for " . $this->getName() . "\n";
+        $result = "Rental Record for {$this->getName()}\n";
 
         foreach ($this->_rentals as $rental) {
             //show figures for this rental
@@ -42,8 +42,22 @@ class Customer
         }
 
         //add footer lines
-        $result .= "Amount owed is " . $this->getTotalCharge() . "\n";
-        $result .= "You earned " . $this->getTotalFrequentRenterPoints() . " frequent renter points";
+        $result .= "Amount owed is {$this->getTotalCharge()}\n";
+        $result .= "You earned {$this->getTotalFrequentRenterPoints()} frequent renter points";
+
+        return $result;
+    }
+
+
+    public function statementHTML()
+    {
+        $result = "<HTML><BODY>Rental Record for {$this->getName()}<br/>";
+
+        foreach ($this->_rentals as $rental) {
+            $result .= "{$rental->getMovie()->getTitle()}: {$rental->getCharge()}<br/>";
+        }
+        $result .= "Amount owed is {$this->getTotalCharge()}<br/>";
+        $result .= "You earned {$this->getTotalFrequentRenterPoints()} frequent renter points</BODY></HTML>";
 
         return $result;
     }
@@ -71,6 +85,7 @@ class Customer
         }
         return $totalAmount;
     }
+
 }
 
 
