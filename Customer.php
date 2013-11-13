@@ -65,8 +65,8 @@ class Customer
     private function getTotalFrequentRenterPoints($rentals)
     {
         $frequentRenterPoints = 0;
-        foreach ($rentals as $rental_tmp) {
-            $frequentRenterPoints += $rental_tmp->getFrequentRenterPoints();
+        foreach ($rentals as $rental) {
+            $frequentRenterPoints += $rental->getFrequentRenterPoints();
         }
         return $frequentRenterPoints;
     }
