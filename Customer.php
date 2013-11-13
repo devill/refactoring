@@ -32,16 +32,38 @@ class Customer
         return $this->name;
     }
 
+    public function getStatementData()
+    {
+        return array(
+            'name' => $this->getName(),
+            'totalCharge' => $this->getTotalCharge(),
+            'totalFrequentRenterPoints' => $this->getTotalFrequentRenterPoints(),
+            'rentals' => $this->getRentalsData()
+        );
+    }
+
+    private function getRentalsData()
+    {
+        return array_map(function($rental) {
+            return array(
+                'title' => $rental->getMovie()->getTitle(),
+                'charge' => $rental->getCharge()
+            );
+        }, $this->rentals);
+    }
+
     public function AsciiStatement()
     {
-        $result = "Rental Record for {$this->getName()}\n";
+        $statement = $this->getStatementData();
 
-        foreach ($this->rentals as $rental) {
-            $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . $rental->getCharge() . "\n";
+        $result = "Rental Record for {$statement['name']}\n";
+
+        foreach ($statement['rentals'] as $rental) {
+            $result .= "\t{$rental['title']}\t{$rental['charge']}\n";
         }
 
-        $result .= "Amount owed is {$this->getTotalCharge()}\n";
-        $result .= "You earned {$this->getTotalFrequentRenterPoints()} frequent renter points";
+        $result .= "Amount owed is {$statement['totalCharge']}\n";
+        $result .= "You earned {$statement['totalFrequentRenterPoints']} frequent renter points";
 
         return $result;
     }
@@ -49,13 +71,15 @@ class Customer
 
     public function HTMLStatement()
     {
-        $result = "<HTML><BODY>Rental Record for {$this->getName()}<br/>";
+        $statement = $this->getStatementData();
 
-        foreach ($this->rentals as $rental) {
-            $result .= "{$rental->getMovie()->getTitle()}: {$rental->getCharge()}<br/>";
+        $result = "<HTML><BODY>Rental Record for {$statement['name']}<br/>";
+
+        foreach($statement['rentals'] as $rental) {
+            $result .= "{$rental['title']}: {$rental['charge']}<br/>";
         }
-        $result .= "Amount owed is {$this->getTotalCharge()}<br/>";
-        $result .= "You earned {$this->getTotalFrequentRenterPoints()} frequent renter points</BODY></HTML>";
+        $result .= "Amount owed is {$statement['totalCharge']}<br/>";
+        $result .= "You earned {$statement['totalFrequentRenterPoints']} frequent renter points</BODY></HTML>";
 
         return $result;
     }
