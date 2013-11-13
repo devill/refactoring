@@ -27,6 +27,9 @@ class Rental
         return $this->_daysRented;
     }
 
+    /**
+     * @return Movie
+     */
     public function getMovie()
     {
         return $this->_movie;
