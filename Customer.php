@@ -41,10 +41,11 @@ class Customer
         $result = "Rental Record for " . $this->getName() . "\n";
 
         foreach ($rentals as $rental) {
-            $frequentRenterPoints += $rental->getFrequentRenterPoints();
 
             //show figures for this rental
             $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . $rental->getCharge() . "\n";
+
+            $frequentRenterPoints += $rental->getFrequentRenterPoints();
 
             $totalAmount += $rental->getCharge();
 
