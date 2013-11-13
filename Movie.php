@@ -9,7 +9,7 @@
 
 namespace Refactoring;
 
-require_once("Price.php");
+require_once("Price/Price.php");
 
 
 class Movie
