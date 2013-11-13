@@ -71,17 +71,7 @@ class Customer
 
     public function HTMLStatement()
     {
-        $statement = $this->getStatementData();
-
-        $result = "<HTML><BODY>Rental Record for {$statement['name']}<br/>";
-
-        foreach($statement['rentals'] as $rental) {
-            $result .= "{$rental['title']}: {$rental['charge']}<br/>";
-        }
-        $result .= "Amount owed is {$statement['totalCharge']}<br/>";
-        $result .= "You earned {$statement['totalFrequentRenterPoints']} frequent renter points</BODY></HTML>";
-
-        return $result;
+        return $this->render($this->getStatementData());
     }
 
     /**
@@ -106,6 +96,23 @@ class Customer
             $totalAmount += $rental->getCharge();
         }
         return $totalAmount;
+    }
+
+    /**
+     * @param $statement
+     * @return string
+     */
+    public function render($statement)
+    {
+        $result = "<HTML><BODY>Rental Record for {$statement['name']}<br/>";
+
+        foreach ($statement['rentals'] as $rental) {
+            $result .= "{$rental['title']}: {$rental['charge']}<br/>";
+        }
+        $result .= "Amount owed is {$statement['totalCharge']}<br/>";
+        $result .= "You earned {$statement['totalFrequentRenterPoints']} frequent renter points</BODY></HTML>";
+
+        return $result;
     }
 
 }
