@@ -9,6 +9,8 @@
 
 namespace Refactoring;
 
+require_once("Price.php");
+
 
 class Movie
 {
@@ -16,7 +18,9 @@ class Movie
     const REGULAR = 0;
     const NEW_RELEASE = 1;
     private $title;
-    private $priceCode;
+
+    /** @var Price */
+    private $price;
 
     function __construct($title, $priceCode)
     {
@@ -26,12 +30,25 @@ class Movie
 
     public function getPriceCode()
     {
-        return $this->priceCode;
+        return $this->price->getPriceCode();
     }
 
     public function setPriceCode($arg)
     {
-        $this->priceCode = $arg;
+        switch($arg)
+        {
+            case Movie::REGULAR:
+                $this->price = new RegularPrice();
+                break;
+            case Movie::NEW_RELEASE:
+                $this->price = new NewReleasePrice();
+                break;
+            case Movie::CHILDRENS:
+                $this->price = new ChildrensPrice();
+                break;
+            default:
+                throw new \Exception("Illegal Price Code");
+        }
     }
 
     public function getTitle()
