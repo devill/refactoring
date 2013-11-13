@@ -8,15 +8,9 @@ abstract class Price
 
     public function getCharge($daysRented)
     {
-        $result = 0;
-        switch ($this->getPriceCode()) {
-            case Movie::CHILDRENS:
-                $result += 1.5;
-                if ($daysRented > 3)
-                    $result += ($daysRented - 3) * 1.5;
-                break;
-
-        }
+        $result = 1.5;
+        if ($daysRented > 3)
+            $result += ($daysRented - 3) * 1.5;
         return $result;
     }
 
