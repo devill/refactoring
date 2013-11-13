@@ -43,9 +43,7 @@ class Customer
         foreach ($rentals as $rental) {
             //while (rentals.hasMoreElements()) {
 
-            $thisAmount = $rental->getCharge();
-
-            $totalAmount += $thisAmount;
+            $totalAmount += $rental->getCharge();
 
             // add frequent renter points
             $frequentRenterPoints++;
@@ -59,7 +57,7 @@ class Customer
 
 
             //show figures for this rental
-            $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . $thisAmount . "\n";
+            $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . $rental->getCharge() . "\n";
 
         }
         //add footer lines
