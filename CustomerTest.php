@@ -14,7 +14,7 @@ require_once('Rental.php');
 require_once('Movie.php');
 
 
-class TestCustomer extends PHPUnit_Framework_TestCase
+class CustomerTest extends PHPUnit_Framework_TestCase
 {
     /** @var \Refactoring\Customer */
     public $customer;
