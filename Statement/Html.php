@@ -17,8 +17,8 @@ class HtmlStatement extends Statement
         foreach ($statement['rentals'] as $rental) {
             $result .= "{$rental['title']}: {$rental['charge']}<br/>";
         }
-        $result .= "Amount owed is {$statement['totalCharge']}<br/>";
-        $result .= "You earned {$statement['totalFrequentRenterPoints']} frequent renter points</BODY></HTML>";
+        $result .= "Amount owed is {$statement['charge']}<br/>";
+        $result .= "You earned {$statement['points']} frequent renter points</BODY></HTML>";
 
         return $result;
     }

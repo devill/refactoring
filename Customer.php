@@ -32,8 +32,8 @@ class Customer
     {
         return array(
             'name' => $this->getName(),
-            'totalCharge' => $this->getTotalCharge(),
-            'totalFrequentRenterPoints' => $this->getTotalFrequentRenterPoints(),
+            'charge' => $this->getTotalCharge(),
+            'points' => $this->getTotalFrequentRenterPoints(),
             'rentals' => $this->getRentalsData()
         );
     }
@@ -46,19 +46,6 @@ class Customer
                 'charge' => $rental->getCharge()
             );
         }, $this->rentals);
-    }
-
-    public function AsciiStatement()
-    {
-        $statement = new AsciiStatement();
-        return $statement->render($this->getStatementData());
-    }
-
-
-    public function HTMLStatement()
-    {
-        $statement = new HtmlStatement();
-        return $statement->render($this->getStatementData());
     }
 
     /**
