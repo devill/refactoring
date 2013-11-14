@@ -1,13 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: merklik
- * Date: 4/27/13
- * Time: 11:12 AM
- * To change this template use File | Settings | File Templates.
- */
-//namespace Refactoring;
-
 
 require_once('Customer.php');
 require_once('Rental.php');
