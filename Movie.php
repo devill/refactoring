@@ -24,9 +24,9 @@ class Movie
         $this->setPriceCode($priceCode);
     }
 
-    public function setPriceCode($arg)
+    public function setPriceCode($priceCode)
     {
-        switch($arg)
+        switch($priceCode)
         {
             case Movie::REGULAR:
                 $this->price = new RegularPrice();
