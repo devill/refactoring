@@ -16,9 +16,11 @@ require_once('Movie.php');
 
 class TestCustomer extends PHPUnit_Framework_TestCase
 {
+    /** @var Refactoring\Customer */
     public $customer;
 
-    public function setUp(){
+    public function setUp()
+    {
         $this->customer = new \Refactoring\Customer("Joe");
     }
 
@@ -91,6 +93,24 @@ class TestCustomer extends PHPUnit_Framework_TestCase
         $expected = "Rental Record for Joe\n\tRambo 1	1.5\n\tRambo 2	6\n\tRambo 3	2\nAmount owed is 9.5\nYou earned 4 frequent renter points";
         $this->assertEquals($expected, $s);
     }
+
+
+//    /**
+//     * @test
+//     */
+//    public function statmentHTML_OneRental_Childrens()
+//    {
+//        //Arrange
+//        $this->addRental("Rambo 1", \Refactoring\Movie::CHILDRENS, 1);
+//
+//        // Act
+//        $s = $this->customer->htmlStatement();
+//
+//        // Assert
+//        $expected = "<HTML><BODY>Rental Record for Joe<br/>Rambo 1: 1.5<br/>Amount owed is 1.5<br/>You earned 1 frequent renter points</BODY></HTML>";
+//        $this->assertEquals($expected, $s);
+//    }
+
 
     /**
      * @param $title
